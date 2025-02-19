@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>азер по всем мультивселеным</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9146FF;
+            --secondary: #41245C;
+            --accent: #00FF7F;
+            --background: #18181B;
+            --text: #EFEFF1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            20% { color: #ffff00; }
+            40% { color: #00ff00; }
+            60% { color: #00ffff; }
+            80% { color: #ff00ff; }
+            100% { color: #ff0000; }
+        }
+
+        header {
+            background: var(--secondary);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: rainbow 5s infinite;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.2rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            background: rgba(65, 36, 92, 0.3);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: rainbow 8s infinite;
+            line-height: 1.4;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: var(--accent);
+        }
+
+        .hero-image {
+            margin-top: 2rem;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+        }
+
+        #about {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #portfolio {
+            padding: 4rem 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(145, 70, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(145, 70, 255, 0.3);
+        }
+
+        .portfolio-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        h3 {
+            color: var(--accent);
+            margin: 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .floating-emote {
+            position: fixed;
+            pointer-events: none;
+            animation: float 6s infinite;
+            opacity: 0.2;
+            font-size: 2rem;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image img {
+                max-width: 200px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="emote-container"></div>
+
+    <header>
+        <nav>
+            
+            <ul>
+               
+                <li><a href="index.html"></a>тимур </li>
+                <li><a href="artem.html"></a>артем богомягков</li>
+                <li><a href="azer.html"></a>азер</li>
+                <li><a href="masha.html"></a>маша</li>
+                
+                <li><a href="nasta.html"></a>настя</li>
+                <li><a href="wara.html"></a>варя болотова</li>
+
+                
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Привет, я Артемий лапа учусь я в школе дыши или дши и седня раскажем про персону азер и его путешествия</h1>
+            
+        </div>
+        <div class="hero-image">
+            <img src="img/cec4ef71-f11d-473d-8681-0eb26d7ef8b6.jpg" alt="Фотография Тимура">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>его история</h2>
+        <div class="about-content">
+            <p>Азер, или, как его прозвали одноклассники из ДШИ (Детской Школы Искусств), “Азер-путешественник”, был личностью загадочной и, чего греха таить, раздражающей. Вместо того чтобы усердно штудировать сольфеджио и мучить этюды на фортепиано, Азер умудрялся исчезать неделями, а потом появляться с байками, от которых у преподавательницы Марьи Ивановны начинал дергаться глаз.
+
+                “Марья Ивановна, а вы знаете, в Токио лапша рамен сама в рот прыгает!” – заливал он, жуя принесенный из дома чурек. Или: “Вчера был на карнавале в Рио, там такие самбы танцуют, ух! Но наш лезгинка все равно круче!”. Разумеется, никто ему не верил. Семья Азера жила скромно, и откуда у него деньги на такие вояжи – оставалось тайной, покрытой мраком.
+                
+                Но однажды Азер превзошел сам себя. Вернувшись после очередного “отпуска”, он заявил, что побывал… в мире Свинки Пеппы.
+                
+                “Представляете, там все розовое! Дома из мармелада, деревья из леденцов! А Джордж все время хрюкает и прыгает в грязные лужи! Я даже с самой Пеппой чай пил, правда, чай был из клубничного сиропа, слишком сладкий для меня”.
+                
+                Класс замер. Даже видавшая виды Марья Ивановна потеряла дар речи. Потом раздался смех. Хохотали все, кроме Азера, который с непроницаемым лицом достал из рюкзака сувенир – маленький брелок в виде Свинки Пеппы, перемазанный чем-то подозрительно напоминающим шоколад.
+                
+                “Это Пеппа мне на прощание подарила. Сказала, чтобы я не забывал их розовый мир”.
+                
+                После этого случая прозвище “Азер-путешественник” окончательно закрепилось за ним. Его байки становились все более абсурдными и нелепыми. Он якобы катался на единороге по Альпам, играл в шахматы с инопланетянами на Марсе и даже участвовал в конкурсе поедания хинкали в Грузии (который, конечно же, выиграл).
+                
+                И вот, в один прекрасный день, Азер снова пропал. Прошла неделя, две, месяц. Одноклассники уже начали забывать о нем, как вдруг…
+                
+                В ДШИ пришла посылка. Большая, обернутая в розовую бумагу с рисунками свинок. Внутри был… живой поросенок. Розовый, пятнистый, с бантиком на голове. И записка: “Передайте Марье Ивановне от Свинки Пеппы. Азер сказал, что она очень хорошая учительница”.
+                
+                Марья Ивановна упала в обморок. А класс, глядя на хрюкающую розовую свинью, понял одно: Азер-путешественник либо гениальный лжец, либо… кто знает, может быть, он и правда побывал везде. И даже в самых невероятных, кринжовых мирах.
+                
+                После этого случая в ДШИ завели поросенка, назвали ее Пеппой и смирились с тем, что в их школе учится самый странный и непредсказуемый ученик во всем Азербайджане. И, возможно, во всей вселенной.</p>
+
+            
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>качества</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>1-похож на артемия лапу</h3>
+            </div>
+            <div class="portfolio-item">
+                <h3>2-афигеный</h3>
+            </div>
+            <div class="portfolio-item">
+                <h3>3-кажеться у него много бабла...</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 азер. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Добавляем плавающие эмодзи на фон
+        const emotes = ['🤔', '😂', '🎮', '👾', '💜', '🔥'];
+        const container = document.getElementById('emote-container');
+
+        for (let i = 0; i < 20; i++) {
+            const emote = document.createElement('div');
+            emote.className = 'floating-emote';
+            emote.textContent = emotes[Math.floor(Math.random() * emotes.length)];
+            emote.style.left = `${Math.random() * 100}vw`;
+            emote.style.top = `${Math.random() * 100}vh`;
+            emote.style.animationDelay = `${Math.random() * 5}s`;
+            container.appendChild(emote);
+        }
+    </script>
+</body>
+</html>
