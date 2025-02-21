@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Подтверждение возраста</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; }
+        .button { padding: 10px 20px; background-color: #ff0000; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>ВНИМАНИЕ! 18+ КОНТЕНТ!</h1>
+    <p>Содержимое предназначено только для лиц старше 18 лет.</p>
+    <button class="button" id="confirmAge">Мне есть 18 лет</button>
+    <script>
+        document.getElementById('confirmAge').addEventListener('click', function() {
+            localStorage.setItem('ageConfirmed', 'true'); // Сохраняем подтверждение в localStorage
+            window.location.href = 'wara.html'; // Перенаправляем на главную страницу
+        });
+    </script>
+</body>
+</html>
