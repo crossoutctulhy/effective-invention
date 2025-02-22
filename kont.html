@@ -17,5 +17,66 @@
             window.location.href = 'wara.html'; // Перенаправляем на главную страницу
         });
     </script>
+    <script>
+        document.addEventListener('contextmenu', function(event) {
+            // Предотвращаем появление стандартного контекстного меню
+            event.preventDefault();
+          
+            // Создаем новый элемент (квадрат)
+            const square = document.createElement('div');
+          
+            // Задаем стили для квадрата
+            square.style.width = '1px';
+            square.style.height = '1px';
+            square.style.backgroundColor = 'white';
+            square.style.position = 'fixed'; // Фиксированное позиционирование, чтобы он всегда был на экране
+            square.style.top = event.clientY + 'px'; // Позиционируем по вертикали относительно курсора
+            square.style.left = event.clientX + 'px'; // Позиционируем по горизонтали относительно курсора
+            square.style.zIndex = '10000'; // Убедимся, что он поверх всего
+          
+            // Добавляем квадрат на страницу
+            document.body.appendChild(square);
+          
+            // Функция для удаления квадрата
+            function removeSquare() {
+              if (square && document.body.contains(square)) { // Проверка на существование и наличие в DOM
+                document.body.removeChild(square);
+              }
+          
+              // Удаляем обработчик событий (важно для избежания утечек памяти)
+              document.removeEventListener('mousemove', mouseMoveHandler);
+            }
+          
+            // Обработчик события mousemove для отслеживания движения курсора
+            function mouseMoveHandler(e) {
+              // Получаем координаты курсора относительно квадрата
+              const rect = square.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+          
+              // Если курсор находится вне квадрата, удаляем его
+              if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+                removeSquare();
+              }
+            }
+          
+            // Добавляем обработчик события mousemove
+            document.addEventListener('mousemove', mouseMoveHandler);
+          
+            // Альтернативный способ: удаление по нажатию левой кнопки мыши
+            // (удобнее, чем отводить курсор, особенно если квадрат маленький)
+            document.addEventListener('mousedown', function removeOnClick(e) {
+               removeSquare();
+               document.removeEventListener('mousedown', removeOnClick);
+            });
+          
+            // Альтернативный способ: удаление по потере фокуса окна
+            // (если переключились на другое окно или вкладку)
+            window.addEventListener('blur', function removeOnBlur() {
+                removeSquare();
+                window.removeEventListener('blur', removeOnBlur);
+            });
+          });
+          </script>
 </body>
 </html>
