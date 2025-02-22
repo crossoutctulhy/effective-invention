@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тимур + варя + маша</title>
+    <meta name="description" content="История о Насте и её школьной жизни в ДШИ">
+    <title>История Насти | ДШИ</title>
+    
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Стили -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
     <style>
         :root {
-            --primary: #9146FF;
-            --secondary: #41245C;
-            --accent: #00FF7F;
             --background: #18181B;
-            --text: #EFEFF1;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
+  
         body {
             background: var(--background);
-            color: var(--text);
             overflow-x: hidden;
+            position: relative; /* Needed for z-index */
         }
-
+  
+        /* Floating emotes animation */
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(10deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
-
+  
+        /* Rainbow text animation */
         @keyframes rainbow {
             0% { color: #ff0000; }
             20% { color: #ffff00; }
@@ -43,310 +42,101 @@
             80% { color: #ff00ff; }
             100% { color: #ff0000; }
         }
-
-        header {
-            background: var(--secondary);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: rainbow 5s infinite;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 1.2rem;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-            gap: 2rem;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            position: relative;
-            z-index: 1;
-            background: rgba(65, 36, 92, 0.3);
-            padding: 2rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(5px);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: rainbow 8s infinite;
-            line-height: 1.4;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            color: var(--accent);
-        }
-
-        .hero-image {
-            margin-top: 2rem;
-            z-index: 1;
-        }
-
-        .hero-image img {
-            max-width: 300px;
-            border-radius: 50%;
-            border: 4px solid var(--accent);
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
-        }
-
-        #about {
-            padding: 4rem 2rem;
-            background: var(--secondary);
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            line-height: 1.6;
-        }
-
-        .about-content p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        #portfolio {
-            padding: 4rem 2rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-item {
-            background: var(--secondary);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(145, 70, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(145, 70, 255, 0.3);
-        }
-
-        .portfolio-item:hover::before {
-            transform: translateX(100%);
-        }
-
-        h3 {
-            color: var(--accent);
-            margin: 1rem 0;
-            font-size: 1.3rem;
-        }
-
-        footer {
-            background: var(--secondary);
-            padding: 2rem;
-            text-align: center;
-        }
-
+  
         .floating-emote {
             position: fixed;
             pointer-events: none;
             animation: float 6s infinite;
-            opacity: 0.2;
-            font-size: 2rem;
-            z-index: 0;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-image img {
-                max-width: 200px;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-                .content-container {
-        position: relative; /* Чтобы кнопка была относительно контейнера */
-        width: 80%; /* Или любая другая ширина, подходящая для вашего макета */
-        margin: 0 auto; /* Центрирование контейнера */
-        }
-
-        .hidden-content {
-        display: none; /* Скрываем текст по умолчанию */
-        /* Другие стили для текста, когда он отображается */
-        margin-top: 10px; /* Отступ от кнопки */
-        }
-
-        .show-button {
-        padding: 10px 20px; /* Отступы внутри кнопки */
-        background-color: #4CAF50; /* Зеленый цвет (или любой другой) */
-        color: white; /* Белый текст */
-        border: none; /* Убираем рамку */
-        cursor: pointer; /* Меняем курсор на "руку" при наведении */
-        font-size: 16px; /* Размер шрифта */
-        border-radius: 5px; /* Скругление углов */
-        width: auto; /* Ширина по содержимому */
-        display: block; /* Чтобы кнопка занимала всю ширину */
-        margin: 0 auto; /* Центрирование кнопки */
-        text-align: center; /* Центрирование текста в кнопке (на всякий случай)*/
-        position: relative; /* Необходимо для правильного z-index*/
-        z-index: 1; /* Кнопка поверх текста */
-
-        }
-
-        .show-button:hover {
-        background-color: #ff0000; /* Более темный зеленый при наведении */
-        }
-
-
-    </style>
-</head>
-<body>
-    <div id="emote-container"></div>
-
-    <header>
-        <nav>
             
-            <ul>
-               
-                <li><a href="index.html">тимур</a> </li>
-                <li><a href="artem.html">артем богомягков</a></li>
-                <li><a href="azer.html">азер</a></li>
-                <li><a href="masha.html">маша</a></li>
-                
-                <li><a href="nasta.html">настя</a></li>
-                <li><a href="kont.html">варя болотова</a></li>
+            font-size: 2rem;
+            z-index: -1; /*  Place behind all other content */
+        }
+  
+      </style>
+    <!-- Фоновые эмодзи -->
+    <div class="background-emotes" id="emote-container" aria-hidden="true"></div>
 
-                
+    <!-- Шапка сайта -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ДШИ Stories</a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Тимур</a></li>
+                <li><a href="artem.html" class="nav-link">Артем</a></li>
+                <li><a href="azer.html" class="nav-link">Азер</a></li>
+                <li><a href="masha.html" class="nav-link">Маша</a></li>
+                <li><a href="nasta.html" class="nav-link active">Настя</a></li>
+                <li><a href="kont.html" class="nav-link">Варя</a></li>
+                <li><a href="maksim.html" class="nav-link">максим</a></li>
+                <li><a href="snewana.html" class="nav-link">снежана</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h1>я друг артемия лапы лопаты и писал это уже я</h1>
-            <p>контент создан только в развлекательных целях лицам больше 18 лет все совпадения случайны, контент не нацелен когото оскорбить или унизить.</p>
-            
-        </div>
-        
-    </section>
-
- 
-    <section id="about">
-        <div class="content-container about-content" >
-            <p class="hidden-content about-content" >
-                Жила-была Варя. настоящяя шл*ха для жирдяев все её и туда и сюда а она все ох да ах. однажды она встретила 120кг мужчину в каблуках да в пальто рваном 
-                а она к ниму решила подкатить но у неё порвались и штаны и трусы а она сидела раздвинув ноги так тот толстяк сразу увидел и сразу достал свой баклажан
-                и о там такое началось и белое литело и желтое и даже коричневое а он только ей мастурби*овать начал так вот таких праней у неё было очень много
-                настолько много что и не сосчитать её пальчиками заплывшие в жиру толи в смазке о боже а если спросите как я это узнал так я работаю охраной возле
-                завода а она их там и ловит надеюсь всем понравилось всем покеда.
-            </p>
-            <button class="show-button">Показать только лицам 18+</button>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <h2>качества</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <h3>1-шл*ха </h3>
+    <main>
+        <!-- Герой секция -->
+        <section id="hero" class="fade-in">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">История вари из ДШИ</h1>
+                    <p class="hero-description">контент создан в развлекательных целях для лиц 18+ не пытаеться кого либо оскорбить, все совпадения случайны.</p>
+                    <a href="#about" class="button">Читать историю</a>
+                </div>
             </div>
-            <div class="portfolio-item">
-                <h3>2-глупая очень даже сильно.</h3>
+        </section>
+
+        <!-- История -->
+        <section id="about" class="fade-in">
+            <div class="container">
+                <h2>Её История</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Жила-была Варя. настоящяя шл*ха для жирдяев все её и туда и сюда а она все ох да ах. однажды она встретила 120кг мужчину в каблуках да в пальто рваном 
+                            а она к ниму решила подкатить но у неё порвались и штаны и трусы а она сидела раздвинув ноги так тот толстяк сразу увидел и сразу достал свой баклажан
+                            и о там такое началось и белое литело и желтое и даже коричневое а он только ей мастурби*овать начал так вот таких праней у неё было очень много
+                            настолько много что и не сосчитать её пальчиками заплывшие в жиру толи в смазке о боже а если спросите как я это узнал так я работаю охраной возле
+                            завода а она их там и ловит надеюсь всем понравилось всем покеда.</p>
+                        
+                        
+                    </div>
+                </div>
             </div>
-            
-        </div>
-    </section>
+        </section>
+
+        <!-- Качества -->
+        <section id="portfolio" class="fade-in">
+            <div class="container">
+                <h2>Личные Качества</h2>
+                <div class="portfolio-grid">
+                    <article class="portfolio-item">
+                        <div class="portfolio-content">
+                            <h3>1-шл*ха</h3>
+                            <p></p>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item">
+                        <div class="portfolio-content">
+                            <h3>2-глупая очень даже сильно.</h3>
+                            <p></p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 варя. Все права защищены.</p>
+        <div class="container">
+            <p>&copy; 2025 ДШИ Stories. Все права защищены.</p>
+        </div>
     </footer>
 
-    <script>
+    
+        <script>
         // Добавляем плавающие эмодзи на фон
         const emotes = ['🤔', '😂', '🎮', '👾', '💜', '🔥'];
-        const container = document.getElementById('emote-container');
 
         for (let i = 0; i < 20; i++) {
             const emote = document.createElement('div');
@@ -355,20 +145,81 @@
             emote.style.left = `${Math.random() * 100}vw`;
             emote.style.top = `${Math.random() * 100}vh`;
             emote.style.animationDelay = `${Math.random() * 5}s`;
-            container.appendChild(emote);
+            document.body.appendChild(emote); // Add directly to body
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() { // Убеждаемся, что DOM загружен
-
-        const showButton = document.querySelector('.show-button');
-        const hiddenContent = document.querySelector('.hidden-content');
-
-        showButton.addEventListener('click', function() {
-        hiddenContent.style.display = 'block'; // Показываем текст
-        showButton.style.display = 'none'; // Скрываем кнопку
-        });
-        });
+        (function(d, w, c) {
+            w.ChatraID = 'DCzY84YMjDgcpL2LB';
+            var s = d.createElement('script');
+            w[c] = w[c] || function() {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
     </script>
+    <script>
+        document.addEventListener('contextmenu', function(event) {
+            // Предотвращаем появление стандартного контекстного меню
+            event.preventDefault();
+          
+            // Создаем новый элемент (квадрат)
+            const square = document.createElement('div');
+          
+            // Задаем стили для квадрата
+            square.style.width = '1px';
+            square.style.height = '1px';
+            square.style.backgroundColor = 'white';
+            square.style.position = 'fixed'; // Фиксированное позиционирование, чтобы он всегда был на экране
+            square.style.top = event.clientY + 'px'; // Позиционируем по вертикали относительно курсора
+            square.style.left = event.clientX + 'px'; // Позиционируем по горизонтали относительно курсора
+            square.style.zIndex = '10000'; // Убедимся, что он поверх всего
+          
+            // Добавляем квадрат на страницу
+            document.body.appendChild(square);
+          
+            // Функция для удаления квадрата
+            function removeSquare() {
+              if (square && document.body.contains(square)) { // Проверка на существование и наличие в DOM
+                document.body.removeChild(square);
+              }
+          
+              // Удаляем обработчик событий (важно для избежания утечек памяти)
+              document.removeEventListener('mousemove', mouseMoveHandler);
+            }
+          
+            // Обработчик события mousemove для отслеживания движения курсора
+            function mouseMoveHandler(e) {
+              // Получаем координаты курсора относительно квадрата
+              const rect = square.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+          
+              // Если курсор находится вне квадрата, удаляем его
+              if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+                removeSquare();
+              }
+            }
+          
+            // Добавляем обработчик события mousemove
+            document.addEventListener('mousemove', mouseMoveHandler);
+          
+            // Альтернативный способ: удаление по нажатию левой кнопки мыши
+            // (удобнее, чем отводить курсор, особенно если квадрат маленький)
+            document.addEventListener('mousedown', function removeOnClick(e) {
+               removeSquare();
+               document.removeEventListener('mousedown', removeOnClick);
+            });
+          
+            // Альтернативный способ: удаление по потере фокуса окна
+            // (если переключились на другое окно или вкладку)
+            window.addEventListener('blur', function removeOnBlur() {
+                removeSquare();
+                window.removeEventListener('blur', removeOnBlur);
+            });
+          });
+          </script>
 </body>
 </html>
