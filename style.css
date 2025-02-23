@@ -300,3 +300,45 @@
         gap: 1rem;
     }
 }
+audio {
+  display: block; /* Чтобы можно было задать ширину и margin */
+  width: 80%; /* Занимает 80% ширины контейнера */
+  max-width: 600px; /* Максимальная ширина, чтобы не растягивался на больших экранах */
+  margin: 20px auto; /* Центрирование по горизонтали и отступ сверху и снизу */
+  background-color: var(--audio-background); /* Тёмный фон */
+  border-radius: 10px; /* Скругленные углы */
+  padding: 10px; /* Отступы внутри плеера */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для объема */
+}
+
+/* Стили для кнопок управления (может потребоваться настройка в зависимости от браузера) */
+audio::-webkit-media-controls-enclosure {
+  background-color: var(--audio-background); /* Фон кнопок */
+  border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+  color: var(--audio-control-color); /* Цвет кнопки воспроизведения/паузы */
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: var(--text-color); /* Цвет отображения времени */
+}
+
+audio::-webkit-media-controls-mute-button {
+  color: var(--audio-control-color); /* Цвет кнопки mute */
+}
+
+audio::-webkit-media-controls-volume-slider-thumb {
+  background-color: var(--audio-control-color); /* Цвет ползунка громкости */
+}
+
+
+
+/* Для Firefox (частичная поддержка, может потребоваться больше стилей) */
+audio::-moz-media-controls-enclosure {
+  background-color: var(--audio-background);
+  border-radius: 8px;
+}
