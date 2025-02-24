@@ -61,16 +61,21 @@
     <header>
         <nav class="container">
             <a href="/" class="logo">ДШИ Stories</a>
-            
+
+            <!--  Кнопка гамбургера для маленьких экранов -->
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Тимур</a></li>
-                <li><a href="artem.html" class="nav-link">Артем</a></li>
-                <li><a href="azer.html" class="nav-link">Азер</a></li>
-                <li><a href="masha.html" class="nav-link">Маша</a></li>
-                <li><a href="nasta.html" class="nav-link active">Настя</a></li>
-                <li><a href="wara.html" class="nav-link">Варя</a></li>
-                <li><a href="maksim.html" class="nav-link">максим</a></li>
-                <li><a href="snewana.html" class="nav-link">снежана</a></li>
+                <li><a href="timur.html" class="nav-link cringe-orange">Тимур</a></li>
+                <li><a href="artem.html" class="nav-link cringe-yellow-green">Артем</a></li>
+                <li><a href="azer.html" class="nav-link cringe-dark-red">Азер</a></li>
+                <li><a href="masha.html" class="nav-link cringe-red">Маша</a></li>
+                <li><a href="nasta.html" class="nav-link active cringe-red">Настя</a></li>
+                <li><a href="wara.html" class="nav-link cringe-dark-red">Варя</a></li>
+                <li><a href="maksim.html" class="nav-link cringe-very-dark-red">максим</a></li>
+                <li><a href="snewana.html" class="nav-link cringe-light-red">снежана</a></li>
             </ul>
         </nav>
     </header>
@@ -179,92 +184,108 @@
     </footer>
 
     
-        <script>
+    <script>
         // Добавляем плавающие эмодзи на фон
-        const emotes = ['🤔', '😂', '🎮', '👾', '💜', '🔥'];
+const emotes = ['🤔', '😂', '🎮', '👾', '💜', '🔥'];
 
-        for (let i = 0; i < 20; i++) {
-            const emote = document.createElement('div');
-            emote.className = 'floating-emote';
-            emote.textContent = emotes[Math.floor(Math.random() * emotes.length)];
-            emote.style.left = `${Math.random() * 100}vw`;
-            emote.style.top = `${Math.random() * 100}vh`;
-            emote.style.animationDelay = `${Math.random() * 5}s`;
-            document.body.appendChild(emote); // Add directly to body
-        }
-    </script>
-    <script>
-        (function(d, w, c) {
-            w.ChatraID = 'DCzY84YMjDgcpL2LB';
-            var s = d.createElement('script');
-            w[c] = w[c] || function() {
-                (w[c].q = w[c].q || []).push(arguments);
-            };
-            s.async = true;
-            s.src = 'https://call.chatra.io/chatra.js';
-            if (d.head) d.head.appendChild(s);
-        })(document, window, 'Chatra');
-    </script>
-    <script>
-        document.addEventListener('contextmenu', function(event) {
-            // Предотвращаем появление стандартного контекстного меню
-            event.preventDefault();
-          
-            // Создаем новый элемент (квадрат)
-            const square = document.createElement('div');
-          
-            // Задаем стили для квадрата
-            square.style.width = '1px';
-            square.style.height = '1px';
-            square.style.backgroundColor = 'white';
-            square.style.position = 'fixed'; // Фиксированное позиционирование, чтобы он всегда был на экране
-            square.style.top = event.clientY + 'px'; // Позиционируем по вертикали относительно курсора
-            square.style.left = event.clientX + 'px'; // Позиционируем по горизонтали относительно курсора
-            square.style.zIndex = '10000'; // Убедимся, что он поверх всего
-          
-            // Добавляем квадрат на страницу
-            document.body.appendChild(square);
-          
-            // Функция для удаления квадрата
-            function removeSquare() {
-              if (square && document.body.contains(square)) { // Проверка на существование и наличие в DOM
-                document.body.removeChild(square);
-              }
-          
-              // Удаляем обработчик событий (важно для избежания утечек памяти)
-              document.removeEventListener('mousemove', mouseMoveHandler);
-            }
-          
-            // Обработчик события mousemove для отслеживания движения курсора
-            function mouseMoveHandler(e) {
-              // Получаем координаты курсора относительно квадрата
-              const rect = square.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-          
-              // Если курсор находится вне квадрата, удаляем его
-              if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
-                removeSquare();
-              }
-            }
-          
-            // Добавляем обработчик события mousemove
-            document.addEventListener('mousemove', mouseMoveHandler);
-          
-            // Альтернативный способ: удаление по нажатию левой кнопки мыши
-            // (удобнее, чем отводить курсор, особенно если квадрат маленький)
-            document.addEventListener('mousedown', function removeOnClick(e) {
+for (let i = 0; i < 20; i++) {
+const emote = document.createElement('div');
+emote.className = 'floating-emote';
+emote.textContent = emotes[Math.floor(Math.random() * emotes.length)];
+emote.style.left = `${Math.random() * 100}vw`;
+emote.style.top = `${Math.random() * 100}vh`;
+emote.style.animationDelay = `${Math.random() * 5}s`;
+document.body.appendChild(emote); // Add directly to body
+}
+</script>
+<script>
+  //  Плавающие эмодзи - без изменений
+
+   // JavaScript для гамбургер-меню
+   const navToggle = document.querySelector(".nav-toggle");
+   const navLinks = document.querySelector(".nav-links");
+
+   navToggle.addEventListener("click", () => {
+       navLinks.classList.toggle("active");
+   });
+
+   // Закрывать меню при клике на ссылку (опционально)
+   navLinks.addEventListener("click", () => {
+       navLinks.classList.remove("active");
+   });
+</script>
+<script>
+   (function(d, w, c) {
+       w.ChatraID = 'DCzY84YMjDgcpL2LB';
+       var s = d.createElement('script');
+       w[c] = w[c] || function() {
+           (w[c].q = w[c].q || []).push(arguments);
+       };
+       s.async = true;
+       s.src = 'https://call.chatra.io/chatra.js';
+       if (d.head) d.head.appendChild(s);
+   })(document, window, 'Chatra');
+</script>
+<script>
+   document.addEventListener('contextmenu', function(event) {
+       // Предотвращаем появление стандартного контекстного меню
+       event.preventDefault();
+
+       // Создаем новый элемент (квадрат)
+       const square = document.createElement('div');
+
+       // Задаем стили для квадрата
+       square.style.width = '1px';
+       square.style.height = '1px';
+       square.style.backgroundColor = 'white';
+       square.style.position = 'fixed'; // Фиксированное позиционирование, чтобы он всегда был на экране
+       square.style.top = event.clientY + 'px'; // Позиционируем по вертикали относительно курсора
+       square.style.left = event.clientX + 'px'; // Позиционируем по горизонтали относительно курсора
+       square.style.zIndex = '10000'; // Убедимся, что он поверх всего
+
+       // Добавляем квадрат на страницу
+       document.body.appendChild(square);
+
+       // Функция для удаления квадрата
+       function removeSquare() {
+           if (square && document.body.contains(square)) { // Проверка на существование и наличие в DOM
+               document.body.removeChild(square);
+           }
+
+           // Удаляем обработчик событий (важно для избежания утечек памяти)
+           document.removeEventListener('mousemove', mouseMoveHandler);
+       }
+
+       // Обработчик события mousemove для отслеживания движения курсора
+       function mouseMoveHandler(e) {
+           // Получаем координаты курсора относительно квадрата
+           const rect = square.getBoundingClientRect();
+           const x = e.clientX - rect.left;
+           const y = e.clientY - rect.top;
+
+           // Если курсор находится вне квадрата, удаляем его
+           if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
                removeSquare();
-               document.removeEventListener('mousedown', removeOnClick);
-            });
-          
-            // Альтернативный способ: удаление по потере фокуса окна
-            // (если переключились на другое окно или вкладку)
-            window.addEventListener('blur', function removeOnBlur() {
-                removeSquare();
-                window.removeEventListener('blur', removeOnBlur);
-            });
-          });
-          </script>
+           }
+       }
+
+       // Добавляем обработчик события mousemove
+       document.addEventListener('mousemove', mouseMoveHandler);
+
+       // Альтернативный способ: удаление по нажатию левой кнопки мыши
+       // (удобнее, чем отводить курсор, особенно если квадрат маленький)
+       document.addEventListener('mousedown', function removeOnClick(e) {
+           removeSquare();
+           document.removeEventListener('mousedown', removeOnClick);
+       });
+
+       // Альтернативный способ: удаление по потере фокуса окна
+       // (если переключились на другое окно или вкладку)
+       window.addEventListener('blur', function removeOnBlur() {
+           removeSquare();
+           window.removeEventListener('blur', removeOnBlur);
+       });
+   });
+</script>
 </body>
 </html>
