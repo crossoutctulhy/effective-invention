@@ -398,25 +398,155 @@ audio::-webkit-media-controls-volume-slider-thumb {
 }
 
 
+
 /* Для Firefox (частичная поддержка, может потребоваться больше стилей) */
 audio::-moz-media-controls-enclosure {
   background-color: var(--audio-background);
   border-radius: 8px;
 }
 
-.hero-image img {
-  width: 150px; /* Уменьшенный размер для мобильных устройств */
-  height: 150px; /* Уменьшенный размер для мобильных устройств */
-  border-radius: 50%;
-  object-fit: cover; /* Важно! Сохраняет пропорции */
-  border: 4px solid var(--accent);
-  filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.2));
-  max-width: 100%; /* Чтобы изображение не выходило за границы контейнера */
+.cringe-stages a:hover {
+  color: #9146FF;
 }
 
-@media (min-width: 769px) { /* Для экранов больше 768px */
-  .hero-image img {
-    width: 300px; /* Возвращаем исходный размер для больших экранов */
-    height: 300px; /* Возвращаем исходный размер для больших экранов */
-  }
+/* Цветовая кодировка кринжа */
+.green {
+  color: #00FF7F;
+}
+
+.light-green {
+  color: #66FF66;
+}
+
+.yellow-green {
+  color: #99FF33;
+}
+
+.yellow {
+  color: #FFFF00;
+}
+
+.orange {
+  color: #FFA500;
+}
+
+.light-red {
+  color: #FF6666;
+}
+
+.red {
+  color: #FF0000;
+}
+
+.dark-red {
+  color: #CC0000;
+}
+
+.very-dark-red {
+  color: #990000;
+}
+
+.black {
+  color: #0e6a77;
+}
+
+/* Общие стили для nav-link (если нужно, добавьте другие) */
+.nav-link {
+  color: var(--text); /* Базовый цвет текста, если нет кринж-класса */
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: var(--spacing-xs) 0;
+  transition: color 0.3s ease; /* Плавное изменение цвета */
+}
+
+/* Убираем подчеркивание при наведении */
+.nav-link:hover {
+  text-decoration: none;
+}
+
+/* Стили для кринж-цветов */
+.nav-link.cringe-green {
+  color: #00FF7F; /* Зеленый */
+}
+
+.nav-link.cringe-light-green {
+  color: #66FF66; /* Салатовый */
+}
+
+.nav-link.cringe-yellow-green {
+  color: #99FF33; /* Желто-зеленый */
+}
+
+.nav-link.cringe-yellow {
+  color: #FFFF00; /* Желтый */
+}
+
+.nav-link.cringe-orange {
+  color: #FFA500; /* Оранжевый */
+}
+
+.nav-link.cringe-light-red {
+  color: #FF6666; /* Светло-красный */
+}
+
+.nav-link.cringe-red {
+  color: #FF0000; /* Красный */
+}
+
+.nav-link.cringe-dark-red {
+  color: #CC0000; /* Темно-красный */
+}
+
+.nav-link.cringe-very-dark-red {
+  color: #990000; /* Очень темно-красный */
+}
+
+.nav-link.cringe-black {
+  color: #000000; /* Черный */
+}
+
+/* Стили для active состояния с учетом кринж-цвета */
+.nav-link.active {
+  font-weight: bold; /* Или другое выделение для active */
+}
+
+.nav-link.active.cringe-green {
+  color: #00FF7F; /* Зеленый */
+}
+
+.nav-link.active.cringe-light-green {
+  color: #66FF66; /* Салатовый */
+}
+
+.nav-link.active.cringe-yellow-green {
+  color: #99FF33; /* Желто-зеленый */
+}
+
+.nav-link.active.cringe-yellow {
+  color: #FFFF00; /* Желтый */
+}
+
+.nav-link.active.cringe-orange {
+  color: #FFA500; /* Оранжевый */
+}
+
+.nav-link.active.cringe-light-red {
+  color: #FF6666; /* Светло-красный */
+}
+
+.nav-link.active.cringe-red {
+  color: #FF0000; /* Красный */
+}
+
+.nav-link.active.cringe-dark-red {
+  color: #CC0000; /* Темно-красный */
+}
+
+.nav-link.active.cringe-very-dark-red {
+  color: #990000; /* Очень темно-красный */
+}
+
+.nav-link.active.cringe-black {
+  color: #000000; /* Черный */
 }
